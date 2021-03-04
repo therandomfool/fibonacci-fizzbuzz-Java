@@ -1,5 +1,7 @@
 package com.cooksys.ftd.assignments.control;
 
+import java.util.Arrays;
+
 /**
  * The Fibonacci sequence is simply and recursively defined: the first two
  * elements are `1`, and every other element is equal to the sum of its two
@@ -55,13 +57,6 @@ public class Fibonacci {
 					"either the given start or end is negative, or if the given end is less than the given start");
 		}
 		
-//		int size = start - end;
-//		int part[] = new int[size];
-//		// Copying the contents of the array
-//		for (int i = 0; i < part.length; i++) {
-//			part[i] = part[start + i];
-//		}
-//		return part;
 		
 		int tempSlice[] = new int[end - start];
 		int arraySlice[]= fibonacci(end);
@@ -87,16 +82,28 @@ public class Fibonacci {
 		if (count < 0) {
 			throw new IllegalArgumentException();
 		}
-		
-		
-		
-		
+
 		
 		if (count <= 1) {
-			int[] temp = new int[count + 1];
-			temp[0] = 1;
+			int temp[] = new int[count + 1];
+			temp[0] = 0;
 			temp[1] = 1;
+			return temp;
+		} else {
+			int temp[] = new int[count+1];
+			temp[0] = 0;
+			temp[1] = 1;
+			for(int i =2; i<= count; i++) {
+				temp[i]= temp[i-1]+ temp[i-2];
+			}
+			return temp;
 		}
-		return null;
+		
+		
+	}
+	public static void main(String[] args) {
+		System.out.println(atIndex(39));
+		System.out.println(Arrays.toString(fibonacci(31)));
+		System.out.println(Arrays.toString(slice(2, 13)));
 	}
 }
