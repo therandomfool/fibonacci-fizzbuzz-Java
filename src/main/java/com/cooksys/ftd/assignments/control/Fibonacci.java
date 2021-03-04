@@ -61,7 +61,7 @@ public class Fibonacci {
 		int tempSlice[] = new int[end - start];
 		int arraySlice[]= fibonacci(end);
 		
-		for(int j = 0; j <= tempSlice.length; j++) {
+		for(int j = 0; j < tempSlice.length; j++) {
 			tempSlice[j] = arraySlice[start+j];
 		}
 		
@@ -82,28 +82,39 @@ public class Fibonacci {
 		if (count < 0) {
 			throw new IllegalArgumentException();
 		}
-
-		
-		if (count <= 1) {
-			int temp[] = new int[count + 1];
-			temp[0] = 0;
-			temp[1] = 1;
+		int temp[] = new int[count];
+		if (count == 0) {
+			
 			return temp;
-		} else {
-			int temp[] = new int[count+1];
-			temp[0] = 0;
+			
+		} else if (count == 1) {
+			
+			temp[0] = 1;
+			
+			return temp;
+		} else if ( count == 2) {
+			
+			temp[0] = 1;
 			temp[1] = 1;
-			for(int i =2; i<= count; i++) {
-				temp[i]= temp[i-1]+ temp[i-2];
-			}
+			
 			return temp;
 		}
 		
+		temp[0] = 1;
+		temp[1] = 1;
+		for(int i =2; i< count; i++) {
+			temp[i]= temp[i-1]+ temp[i-2];
+		}
+		return temp;
 		
 	}
 	public static void main(String[] args) {
-		System.out.println(atIndex(39));
-		System.out.println(Arrays.toString(fibonacci(31)));
-		System.out.println(Arrays.toString(slice(2, 13)));
+		System.out.println("atIndex: " + atIndex(9));
+		
+		System.out.println("fib: " + Arrays.toString(fibonacci(31)));
+		
+		System.out.println("slice: " + Arrays.toString(slice(10, 13)));
+		
+		
 	}
 }

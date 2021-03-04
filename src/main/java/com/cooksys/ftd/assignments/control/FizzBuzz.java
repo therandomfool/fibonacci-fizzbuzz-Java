@@ -1,5 +1,7 @@
 package com.cooksys.ftd.assignments.control;
 
+import java.util.Arrays;
+
 /**
  * FizzBuzz is an old programming exercise. The goal is to iterate over a range
  * of numbers and print a message about each number's divisibility.
@@ -72,13 +74,31 @@ public class FizzBuzz {
 			throw new IllegalArgumentException("The end can not be less than the start");
 		}
 
-		String[] divArray = new String[end - start];
-
+		String[] divArray = new String[end];
+		
+		int count = 0;
 		for (int i = start; i < divArray.length; i++) {
-
+			if (i % 3 == 0 && i % 5 == 0) {
+				divArray[i]= i+ ": FizzBuzz";
+				count++;
+			} else if (i % 5 == 0 ) {
+				divArray[i]= i+ ": Buzz";
+				count++;
+			} else if (i % 3 == 0 ) {
+				divArray[i]= i+": Fizz";
+				count++;
+			} 
 		}
 
-		return null;
+		String temp[] = new String[count];
+		int newCount = 0;
+		for(int i =0; i< divArray.length; i++) {
+			if(divArray[i] != null) {
+				temp[newCount] = divArray[i];
+				newCount++;
+			}
+		}
+		return temp;
 	}
 
 	/**
@@ -88,12 +108,12 @@ public class FizzBuzz {
 	public static void main(String[] args) {
 		
 		
-		for(int i = 1; i <= 115; i++) {
-			
-//			System.out.println(messages(1, 115));
-		}
 		
-		return;
+			
+			System.out.println(Arrays.toString(messages(1, 115)));
+	
+		
+		
 	}
 
 }
